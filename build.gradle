@@ -1,0 +1,29 @@
+buildscript {
+    ext {               //ext는 전역변수 선언을 의미한다
+        springBootVersion = '2.1.7.RELEASE'             //스프링부트 버전을 이와 같이 정의한다.
+    }
+    repositories{                   //각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지 정한다.
+        mavenCentral()              //가장 기본적으로 많이 쓰임
+        jcenter()                   //본인이 많은 라이브러리 업로드 공유가 어려워 간단하게 업로드 하기 위해 문제점 해결
+    }
+    dependencies{
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")    //라이브러리들 버전관리 통
+    }
+}
+
+apply plugin: 'java'                            //스프링 부트의 의존성을 관리해주는 플러그인
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
